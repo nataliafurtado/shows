@@ -5,11 +5,11 @@ import 'package:home/data/mappers/show_response_mapper.dart';
 import 'package:home/infrastructure/data_sources/get_shows_data_source.dart';
 import 'package:packages/exports.dart';
 
-class CreateAliasDataSourceImpl extends GetShowsDataSource {
+class GetShowsDataSourceImpl extends GetShowsDataSource {
   final Dio client;
   final String baseUrl;
 
-  CreateAliasDataSourceImpl({
+  GetShowsDataSourceImpl({
     required this.client,
     required this.baseUrl,
   });
@@ -21,13 +21,11 @@ class CreateAliasDataSourceImpl extends GetShowsDataSource {
         '$baseUrl/shows',
         queryParameters: {'page': 1},
       );
-
-      response.data.map((e) => print('ss')).toList();
-// [].map((e) => null)
-      // print(response.data.toString());
-      // final aliasResponse = ShowResponse.fromJson(response.data);
-      // return aliasResponse.toShows();
-      return [];
+      return response.data
+          .map<Show>(
+            (e) => ShowResponse.fromJson(e).toShow(),
+          )
+          .toList();
     } on Exception catch (_) {
       throw UnableToGetShows();
     }

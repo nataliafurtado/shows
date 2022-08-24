@@ -7,6 +7,17 @@ extension ShowsResponseMapper on ShowResponse {
       name: name ?? '',
       url: url ?? '',
       id: id ?? 0,
+      imageUrl: loadImage(),
     );
+  }
+
+  String loadImage() {
+    if (image != null && image!.medium != null) {
+      return image!.medium!;
+    }
+    if (image != null && image!.original != null) {
+      return image!.original!;
+    }
+    return '';
   }
 }

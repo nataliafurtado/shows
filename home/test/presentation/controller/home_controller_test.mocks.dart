@@ -36,8 +36,8 @@ class MockGetShowsUseCase extends _i1.Mock implements _i3.GetShowsUseCase {
       (super.noSuchMethod(Invocation.getter(#getShowsDataSource),
           returnValue: _FakeGetShowsDataSource_0()) as _i2.GetShowsDataSource);
   @override
-  _i4.Future<List<_i5.Show>> call({String? url}) =>
-      (super.noSuchMethod(Invocation.method(#call, [], {#url: url}),
+  _i4.Future<List<_i5.Show>> call({int? pageId}) =>
+      (super.noSuchMethod(Invocation.method(#call, [], {#pageId: pageId}),
               returnValue: Future<List<_i5.Show>>.value(<_i5.Show>[]))
           as _i4.Future<List<_i5.Show>>);
 }

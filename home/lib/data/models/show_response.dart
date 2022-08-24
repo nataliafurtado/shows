@@ -1,3 +1,4 @@
+import 'package:home/data/models/image.dart';
 import 'package:packages/exports.dart';
 
 part 'show_response.g.dart';
@@ -7,11 +8,13 @@ class ShowResponse extends Equatable {
   final int? id;
   final String? url;
   final String? name;
+  final Image? image;
 
   const ShowResponse({
     this.id,
     this.url,
     this.name,
+    this.image,
   });
 
   @override
@@ -19,6 +22,7 @@ class ShowResponse extends Equatable {
         id,
         url,
         name,
+        image,
       ];
 
   factory ShowResponse.fromJson(Map<String, dynamic> json) =>

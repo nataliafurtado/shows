@@ -29,7 +29,7 @@ class MockGetShowsDataSource extends _i1.Mock
   }
 
   @override
-  _i3.Future<List<_i4.Show>> getShows({String? pageId}) =>
+  _i3.Future<List<_i4.Show>> getShows({int? pageId}) =>
       (super.noSuchMethod(Invocation.method(#getShows, [], {#pageId: pageId}),
               returnValue: Future<List<_i4.Show>>.value(<_i4.Show>[]))
           as _i3.Future<List<_i4.Show>>);

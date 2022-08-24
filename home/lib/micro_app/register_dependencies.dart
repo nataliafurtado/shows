@@ -1,4 +1,4 @@
-import 'package:home/data/data_sources/create_alias_data_source_impl.dart';
+import 'package:home/data/data_sources/get_shows_data_source_impl.dart';
 import 'package:home/domain/use_cases/get_shows_use_case.dart';
 import 'package:home/infrastructure/data_sources/get_shows_data_source.dart';
 import 'package:home/micro_app/home_dependencies.dart';
@@ -9,7 +9,7 @@ Future<void> registerDependencies({
   required HomeDependencies homeDependencies,
 }) async {
   MicroApp.instanceManager.registerLazySingleton<GetShowsDataSource>(
-    () => CreateAliasDataSourceImpl(
+    () => GetShowsDataSourceImpl(
       baseUrl: homeDependencies.baseUrl,
       client: homeDependencies.client,
     ),

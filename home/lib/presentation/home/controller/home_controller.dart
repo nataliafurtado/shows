@@ -15,22 +15,43 @@ class HomeController {
 
   final GetShowsUseCase getShowsUseCase;
 
-  final aliases = StateManagementWithRXNot<List<Show>>(
+  final shows = StateManagementWithRXNot<List<Show>>(
     [],
   );
+
+  final showsLists = StateManagementWithRXNot<List<List<Show>>>(
+    [],
+  );
+
   final homePageState = StateManagementWithRXNot<HomePageState>(
     HomePageState.success,
   );
 
-  getShows(String url) async {
+  init() async {
     try {
       homePageState.value = HomePageState.loading;
-      final alias = await getShowsUseCase(pageId: 1);
-      // aliases.value.add(alias);
+      await getShows2(1);
+      await getShows2(2);
+      await getShows2(3);
       homePageState.value = HomePageState.success;
     } catch (e) {
       homePageState.value = HomePageState.error;
     }
+  }
+
+  getShows(String url) async {
+    try {
+      homePageState.value = HomePageState.loading;
+      await getShows2(4);
+      homePageState.value = HomePageState.success;
+    } catch (e) {
+      homePageState.value = HomePageState.error;
+    }
+  }
+
+  getShows2(int pageId) async {
+    final shows = await getShowsUseCase(pageId: pageId);
+    showsLists.value.add(shows);
   }
 
   changeToSuccessWidget() {
