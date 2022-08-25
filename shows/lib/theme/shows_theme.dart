@@ -19,6 +19,10 @@ class ShowsTheme implements ThemeType {
           fontSize: 24,
           fontWeight: FontWeight.w500,
         ),
+        l4: const TextStyle(
+          fontSize: 36,
+          fontWeight: FontWeight.w500,
+        ),
         cardTitle: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w500,
@@ -32,7 +36,7 @@ class ShowsTheme implements ThemeType {
   @override
   ColorTypes colorType() => ColorTypes(
         primary: const Color(0XFFE9E9E9),
-        secondary: Colors.blue,
+        secondary: Colors.pink,
         auxiliary: Colors.amber,
       );
 

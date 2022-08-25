@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:entities/shows/alias.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:home/data/data_sources/create_alias_data_source_impl.dart';
-import 'package:home/domain/exceptions/create_alias_exceptions.dart';
+import 'package:home/domain/exceptions/get_shows_exceptions.dart';
 import 'package:mock_web_server/mock_web_server.dart';
 import 'package:packages/exports.dart';
 

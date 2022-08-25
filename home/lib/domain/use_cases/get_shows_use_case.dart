@@ -1,5 +1,5 @@
 import 'package:entities/shows/show.dart';
-import 'package:home/domain/exceptions/create_alias_exceptions.dart';
+import 'package:home/domain/exceptions/get_shows_exceptions.dart';
 import 'package:home/infrastructure/data_sources/get_shows_data_source.dart';
 
 class GetShowsUseCase {
@@ -15,6 +15,8 @@ class GetShowsUseCase {
       return await getShowsDataSource.getShows(
         pageId: pageId,
       );
+    } on FinishPaginationOfGetShows {
+      rethrow;
     } catch (_) {
       throw UnableToGetShows();
     }

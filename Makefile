@@ -2,7 +2,7 @@
 
 ROOT_DIR = $(realpath .)
 
-PACKAGE = packages micro_app state_management entities design_system home shows
+PACKAGE = packages micro_app state_management entities design_system home show_details shows
 
 pub-get: 
 	@for i in $(PACKAGE); do \

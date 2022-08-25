@@ -1,5 +1,5 @@
-name: home
-description: The list of shows
+name: show_details
+description: The show page details
 version: 0.0.1
 homepage:
 publish_to: none
@@ -21,26 +21,17 @@ dependencies:
     path: ../entities
   packages:
     path: ../packages
- 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  json_serializable: ^6.3.1 
-  build_runner: ^2.2.0
-  mockito: ^5.2.0
-  mock_web_server: ^5.0.0-nullsafety.1
   flutter_lints: ^1.0.0
-  golden_toolkit: ^0.13.0
-
-
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-  uses-material-design: true
 
   # To add assets to your package, add an assets section, like this:
   # assets:

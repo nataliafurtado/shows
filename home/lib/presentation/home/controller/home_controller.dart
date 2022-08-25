@@ -1,11 +1,19 @@
 import 'package:entities/shows/show.dart';
 import 'package:home/domain/use_cases/get_shows_use_case.dart';
 import 'package:state_management/state_manager_with_rx_not.dart';
+import 'package:home/domain/exceptions/get_shows_exceptions.dart';
 
 enum HomePageState {
   loading,
   success,
   error,
+}
+
+enum ListPaginationState {
+  regular,
+  error,
+  loading,
+  finish,
 }
 
 class HomeController {
@@ -27,34 +35,59 @@ class HomeController {
     HomePageState.success,
   );
 
+  final listPaginationState = StateManagementWithRXNot<ListPaginationState>(
+    ListPaginationState.regular,
+  );
+
+  int get getShowListsLength => showsLists.value.length;
+
+  ListPaginationState get getListPaginationState => listPaginationState.value;
+
+  int lastId = 0;
+
   init() async {
     try {
       homePageState.value = HomePageState.loading;
-      await getShows2(1);
-      await getShows2(2);
-      await getShows2(3);
+      await getShows(pageId: 0);
+      await getShows(pageId: 1);
+      await getShows(pageId: 2);
       homePageState.value = HomePageState.success;
     } catch (e) {
       homePageState.value = HomePageState.error;
     }
   }
 
-  getShows(String url) async {
+  List<Show> getShowList(int index, int page) {
+    final length = showsLists.value[index].length;
+    int quantityToLoad = page * 10;
+    if (quantityToLoad >= length) {
+      quantityToLoad = length;
+    }
+    return showsLists.value[index].getRange(0, quantityToLoad).toList();
+  }
+
+  loadNextPage() async {
     try {
-      homePageState.value = HomePageState.loading;
-      await getShows2(4);
-      homePageState.value = HomePageState.success;
+      listPaginationState.value = ListPaginationState.loading;
+      await getShows();
+      listPaginationState.value = ListPaginationState.regular;
+    } on FinishPaginationOfGetShows {
+      listPaginationState.value = ListPaginationState.finish;
     } catch (e) {
-      homePageState.value = HomePageState.error;
+      listPaginationState.value = ListPaginationState.error;
     }
   }
 
-  getShows2(int pageId) async {
-    final shows = await getShowsUseCase(pageId: pageId);
+  getShows({int? pageId}) async {
+    final shows = await getShowsUseCase(
+      pageId: pageId ?? getNextPage(),
+    );
     showsLists.value.add(shows);
+    lastId = shows.last.id;
   }
 
-  changeToSuccessWidget() {
-    homePageState.value = HomePageState.success;
+  int getNextPage() {
+    final lastPage = lastId / 250;
+    return lastPage.round() + 1;
   }
 }

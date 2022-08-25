@@ -1,5 +1,7 @@
 import 'package:home/micro_app/home_dependencies.dart';
 import 'package:home/micro_app/home_micro_app.dart';
+import 'package:show_details/micro_app/show_details_dependencies.dart';
+import 'package:show_details/micro_app/show_details_micro_app.dart';
 import 'package:shows/interceptors/dio_instances.dart';
 import 'package:shows/utils/constants.dart';
 import 'package:shows/utils/im.dart';
@@ -19,6 +21,12 @@ class InitMicroApps {
         client: DioInstances.dioClient(),
       ),
     ),
+    ShowDetailsMicroApp(
+      ShowDetailsDependencies(
+        baseUrl: Constants.baseUrl,
+        client: DioInstances.dioClient(),
+      ),
+    )
   ];
 
   Future<void> initMicroApps() async {

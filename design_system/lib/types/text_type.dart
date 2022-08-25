@@ -5,6 +5,7 @@ class TextType {
     required this.l1,
     required this.l2,
     required this.l3,
+    required this.l4,
     required this.cardTitle,
     required this.cardSubTitle,
   });
@@ -12,6 +13,7 @@ class TextType {
   final TextStyle l1;
   final TextStyle l2;
   final TextStyle l3;
+  final TextStyle l4;
   final TextStyle cardTitle;
   final TextStyle cardSubTitle;
 }

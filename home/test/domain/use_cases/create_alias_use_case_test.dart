@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:home/domain/exceptions/create_alias_exceptions.dart';
+import 'package:home/domain/exceptions/get_shows_exceptions.dart';
 import 'package:home/domain/use_cases/get_shows_use_case.dart';
 import 'package:home/infrastructure/data_sources/get_shows_data_source.dart';
 import 'package:mockito/annotations.dart';
