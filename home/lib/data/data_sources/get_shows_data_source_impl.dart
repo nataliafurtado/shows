@@ -1,5 +1,5 @@
-import 'package:entities/shows/show.dart';
-import 'package:home/data/models/show_response.dart';
+import 'package:entities/shows/entities/show.dart';
+import 'package:entities/shows/models/show_response.dart';
 import 'package:home/domain/exceptions/get_shows_exceptions.dart';
 import 'package:home/data/mappers/show_response_mapper.dart';
 import 'package:home/infrastructure/data_sources/get_shows_data_source.dart';

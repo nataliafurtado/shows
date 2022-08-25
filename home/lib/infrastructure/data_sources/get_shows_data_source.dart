@@ -1,4 +1,4 @@
-import 'package:entities/shows/show.dart';
+import 'package:entities/shows/entities/show.dart';
 
 abstract class GetShowsDataSource {
   Future<List<Show>> getShows({

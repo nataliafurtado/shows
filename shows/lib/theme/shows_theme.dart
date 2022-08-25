@@ -12,7 +12,7 @@ class ShowsTheme implements ThemeType {
           fontWeight: FontWeight.w700,
         ),
         l2: const TextStyle(
-          fontSize: 20,
+          fontSize: 18,
           fontWeight: FontWeight.w500,
         ),
         l3: const TextStyle(

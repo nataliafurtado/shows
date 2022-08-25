@@ -43,12 +43,11 @@ class _TextFieldButtonWidgetState extends State<TextFieldButtonWidget> {
           SizedBox(width: sp.s4),
           IconButtonWidget(
             onPressed: () {
-              print("dedeed");
-              // if (textController.text.isNotEmpty) {
-              widget.onButtonClick(
-                textController.text,
-              );
-              // }
+              if (textController.text.isNotEmpty) {
+                widget.onButtonClick(
+                  textController.text,
+                );
+              }
             },
           ),
         ],

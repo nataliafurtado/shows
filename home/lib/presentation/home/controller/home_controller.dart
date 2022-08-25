@@ -1,4 +1,4 @@
-import 'package:entities/shows/show.dart';
+import 'package:entities/shows/entities/show.dart';
 import 'package:home/domain/use_cases/get_shows_use_case.dart';
 import 'package:state_management/state_manager_with_rx_not.dart';
 import 'package:home/domain/exceptions/get_shows_exceptions.dart';

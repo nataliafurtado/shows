@@ -1,4 +1,4 @@
-import 'package:entities/shows/show.dart';
+import 'package:entities/shows/entities/show.dart';
 import 'package:state_management/state_manager_with_rx_not.dart';
 
 enum HomePageState {

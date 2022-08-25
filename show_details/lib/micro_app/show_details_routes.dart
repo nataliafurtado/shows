@@ -1,4 +1,4 @@
-import 'package:entities/shows/show.dart';
+import 'package:entities/shows/entities/show.dart';
 import 'package:show_details/presentation/show_details_page.dart';
 
 final showDetailsRoutes = <String, Function(dynamic context, Object? args)>{

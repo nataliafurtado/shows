@@ -1,21 +1,17 @@
 import 'package:packages/exports.dart';
 
-class Show extends Equatable {
+abstract class Serie extends Equatable {
   final String name;
   final String url;
   final int id;
   final String imageUrl;
+  final String summary;
 
-  const Show({
+  const Serie({
     required this.name,
     required this.url,
     required this.id,
     required this.imageUrl,
+    required this.summary,
   });
-
-  @override
-  List<Object> get props => [
-        name,
-        url,
-      ];
 }

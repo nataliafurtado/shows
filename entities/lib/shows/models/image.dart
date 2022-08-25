@@ -3,11 +3,11 @@ import 'package:packages/exports.dart';
 part 'image.g.dart';
 
 @JsonSerializable()
-class Image extends Equatable {
+class ImageResponse extends Equatable {
   final String? medium;
   final String? original;
 
-  const Image({
+  const ImageResponse({
     required this.medium,
     required this.original,
   });
@@ -18,7 +18,8 @@ class Image extends Equatable {
         original,
       ];
 
-  factory Image.fromJson(Map<String, dynamic> json) => _$ImageFromJson(json);
+  factory ImageResponse.fromJson(Map<String, dynamic> json) =>
+      _$ImageResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ImageToJson(this);
+  Map<String, dynamic> toJson() => _$ImageResponseToJson(this);
 }

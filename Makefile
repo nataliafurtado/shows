@@ -4,7 +4,7 @@ ROOT_DIR = $(realpath .)
 
 PACKAGE = packages micro_app state_management entities design_system home show_details shows
 
-pub-get: 
+get: 
 	@for i in $(PACKAGE); do \
 		cd $$i && flutter pub get && cd ..; \
 	done
