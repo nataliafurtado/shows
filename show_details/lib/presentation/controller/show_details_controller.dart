@@ -24,14 +24,16 @@ class ShowDetailsController {
     [],
   );
 
+  List<Season> get seasonsList => seasons.value;
+
   final homePageState = StateManagementWithRXNot<HomePageState>(
     HomePageState.success,
   );
 
-  init() async {
+  init(int id) async {
     try {
       homePageState.value = HomePageState.loading;
-      seasons.value = await getSeasonsUseCase(id: 1);
+      seasons.value = await getSeasonsUseCase(id: id);
 
       homePageState.value = HomePageState.success;
     } catch (e) {

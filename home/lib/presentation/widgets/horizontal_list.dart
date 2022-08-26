@@ -60,9 +60,6 @@ class _HorizontalListState extends State<HorizontalList> {
             shows.length,
             (indexShow) => Row(
               children: [
-                SizedBox(
-                  width: sp.s2,
-                ),
                 ShowCard(
                   name: shows[indexShow].name,
                   imageUrl: shows[indexShow].imageUrl,
@@ -73,7 +70,10 @@ class _HorizontalListState extends State<HorizontalList> {
                       arguments: shows[indexShow],
                     );
                   },
-                )
+                  ratio: 59 / 42,
+                  width: 150,
+                ),
+                SizedBox(width: sp.s2),
               ],
             ),
           ),

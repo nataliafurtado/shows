@@ -25,5 +25,6 @@ Future<void> registerDependencies({
     () => ShowDetailsController(
       getSeasonsUseCase: MicroApp.instanceManager.get<GetSeasonsUseCase>(),
     ),
+    pathToKeepInstanceAlive: '/show_details_page',
   );
 }

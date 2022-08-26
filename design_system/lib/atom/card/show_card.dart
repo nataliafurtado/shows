@@ -10,19 +10,20 @@ class ShowCard extends StatelessWidget {
     required this.imageUrl,
     required this.name,
     required this.onClick,
+    required this.ratio,
+    required this.width,
   }) : super(key: key);
 
   final String imageUrl;
   final String name;
   final VoidCallback onClick;
+  final double ratio;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
     final sp = ThemeStyle.themeType.spaceTypes();
-    const double ratio = 59 / 42;
-    const double width = 150.0;
-    const double height = width * ratio;
-
+    double height = width * ratio;
     return InkWell(
       onTap: onClick,
       child: SizedBox(

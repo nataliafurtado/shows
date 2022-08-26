@@ -27,10 +27,9 @@ class TextTwoFields extends StatelessWidget {
         Expanded(
           child: Text(
             secondText,
-            style: ThemeStyle.themeType
-                .textType()
-                .l1
-                .copyWith(fontWeight: FontWeight.normal, height: 1.2),
+            style: ThemeStyle.themeType.textType().l1.copyWith(
+                  height: 1.2,
+                ),
           ),
         ),
       ],

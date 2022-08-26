@@ -43,7 +43,7 @@ class GetSeasonsDataSourceImpl extends GetSeasonsDataSource {
       },
     ).forEach(
       (key, value) => seasons.add(
-        Season(seasons: value),
+        Season(seasons: value, seasonId: key),
       ),
     );
     return seasons;
