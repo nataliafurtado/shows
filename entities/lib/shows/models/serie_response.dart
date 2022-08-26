@@ -32,4 +32,14 @@ class SerieResponse extends Equatable {
       _$SerieResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$SerieResponseToJson(this);
+
+  String loadImage() {
+    if (image != null && image!.medium != null) {
+      return image!.medium!;
+    }
+    if (image != null && image!.original != null) {
+      return image!.original!;
+    }
+    return '';
+  }
 }

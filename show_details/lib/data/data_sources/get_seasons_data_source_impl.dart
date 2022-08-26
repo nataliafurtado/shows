@@ -1,9 +1,11 @@
 import 'package:entities/shows/entities/season.dart';
-import 'package:entities/shows/entities/show.dart';
+import 'package:entities/shows/entities/episode.dart';
 import 'package:entities/shows/models/episode_response.dart';
 import 'package:packages/exports.dart';
 import 'package:show_details/domain/exceptions/get_shows_exceptions.dart';
+import 'package:show_details/data/mappers/show_response_mapper.dart';
 import 'package:show_details/infrastructure/data_sources/get_seasons_data_source.dart';
+import "package:collection/collection.dart";
 
 class GetSeasonsDataSourceImpl extends GetSeasonsDataSource {
   final Dio client;
@@ -18,16 +20,32 @@ class GetSeasonsDataSourceImpl extends GetSeasonsDataSource {
   Future<List<Season>> getSeasons({required int id}) async {
     try {
       final response = await client.get(
-        '$baseUrl/seasons/$id/episodes',
+        '$baseUrl/shows/$id/episodes',
       );
-      return response.data
-          // TODO erro aqui
-          .map<Show>(
-            (e) => EpisodeResponse.fromJson(e),
+      final episodes = response.data
+          .map<Episode>(
+            (e) => EpisodeResponse.fromJson(e).toEpisode(),
           )
           .toList();
-    } on Exception catch (_) {
+
+      return formatToSeasons(episodes);
+    } catch (e) {
       throw UnableToGetSeasons();
     }
+  }
+
+  List<Season> formatToSeasons(List<Episode> episodes) {
+    List<Season> seasons = [];
+    groupBy(
+      episodes,
+      (Episode e) {
+        return e.season;
+      },
+    ).forEach(
+      (key, value) => seasons.add(
+        Season(seasons: value),
+      ),
+    );
+    return seasons;
   }
 }

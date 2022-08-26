@@ -31,7 +31,7 @@ class GetShowsDataSourceImpl extends GetShowsDataSource {
         throw FinishPaginationOfGetShows();
       }
       throw UnableToGetShows();
-    } on Exception catch (_) {
+    } catch (_) {
       throw UnableToGetShows();
     }
   }

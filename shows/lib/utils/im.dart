@@ -22,6 +22,17 @@ class IM extends InstanceManager {
     GetIt.I.registerLazySingleton<T>(register);
   }
 
+  @override
+  void registerFactory<T extends Object>(
+    T Function() factoryFunc, {
+    String? instanceName,
+  }) {
+    return GetIt.I.registerFactory<T>(
+      factoryFunc,
+      instanceName: instanceName,
+    );
+  }
+
   void loadPagePath(String pagePath) {
     pages.add(pagePath);
   }

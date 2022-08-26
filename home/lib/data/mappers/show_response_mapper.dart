@@ -14,14 +14,4 @@ extension ShowsResponseMapper on ShowResponse {
       summary: summary ?? '',
     );
   }
-
-  String loadImage() {
-    if (image != null && image!.medium != null) {
-      return image!.medium!;
-    }
-    if (image != null && image!.original != null) {
-      return image!.original!;
-    }
-    return '';
-  }
 }

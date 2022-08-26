@@ -8,14 +8,14 @@ import 'package:micro_app/micro_app.dart';
 Future<void> registerDependencies({
   required HomeDependencies homeDependencies,
 }) async {
-  MicroApp.instanceManager.registerLazySingleton<GetShowsDataSource>(
+  MicroApp.instanceManager.registerFactory<GetShowsDataSource>(
     () => GetShowsDataSourceImpl(
       baseUrl: homeDependencies.baseUrl,
       client: homeDependencies.client,
     ),
   );
 
-  MicroApp.instanceManager.registerLazySingleton<GetShowsUseCase>(
+  MicroApp.instanceManager.registerFactory<GetShowsUseCase>(
     () => GetShowsUseCase(
       getShowsDataSource: MicroApp.instanceManager.get<GetShowsDataSource>(),
     ),

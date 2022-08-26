@@ -4,7 +4,9 @@ import 'package:design_system/theme_style.dart';
 import 'package:design_system/atom/text/text_two_fields.dart';
 import 'package:entities/shows/entities/show.dart';
 import 'package:flutter/material.dart';
+import 'package:micro_app/micro_app.dart';
 import 'package:packages/exports.dart';
+import 'package:show_details/presentation/controller/show_details_controller.dart';
 import 'package:show_details/utils/show_details_strings.dart';
 
 class ShowDetailsPage extends StatelessWidget {
@@ -17,6 +19,10 @@ class ShowDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sp = ThemeStyle.themeType.spaceTypes();
+    //    late HomeController controller;
+
+    final controller = MicroApp.instanceManager.get<ShowDetailsController>();
+    controller.init();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ThemeStyle.themeType.colorType().primary,

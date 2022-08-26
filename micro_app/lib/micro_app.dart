@@ -21,6 +21,11 @@ abstract class InstanceManager {
     Function? disposingFunction,
   });
 
+  void registerFactory<T extends Object>(
+    T Function() factoryFunc, {
+    String? instanceName,
+  });
+
   T get<T extends Object>({
     String? instanceName,
     dynamic param1,
