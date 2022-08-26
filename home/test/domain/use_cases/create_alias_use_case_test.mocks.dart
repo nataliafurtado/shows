@@ -4,7 +4,7 @@
 
 import 'dart:async' as _i3;
 
-import 'package:entities/shows/show.dart' as _i4;
+import 'package:entities/shows/entities/show.dart' as _i4;
 import 'package:home/infrastructure/data_sources/get_shows_data_source.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;

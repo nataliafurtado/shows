@@ -5,6 +5,7 @@ import 'package:home/domain/use_cases/search_shows_use_case.dart';
 import 'package:home/infrastructure/data_sources/get_shows_data_source.dart';
 import 'package:home/micro_app/home_dependencies.dart';
 import 'package:home/presentation/home/controller/home_controller.dart';
+import 'package:home/presentation/search/controller/search_controller.dart';
 import 'package:micro_app/micro_app.dart';
 
 Future<void> registerDependencies({
@@ -40,6 +41,12 @@ Future<void> registerDependencies({
     () => SearchShowsUseCase(
       getShowsDataSource:
           MicroApp.instanceManager.get<SearchShowsDataSourceImpl>(),
+    ),
+  );
+
+  MicroApp.instanceManager.registerLazySingleton<SearchController>(
+    () => SearchController(
+      searchShowsUseCase: MicroApp.instanceManager.get<SearchShowsUseCase>(),
     ),
   );
 }
