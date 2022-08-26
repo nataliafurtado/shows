@@ -20,4 +20,8 @@ class InstanceManagerMock extends InstanceManager {
   }) {
     dependencies.addAll({T.toString(): register});
   }
+
+  @override
+  void registerFactory<T extends Object>(T Function() factoryFunc,
+      {String? instanceName}) {}
 }

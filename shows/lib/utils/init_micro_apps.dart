@@ -26,7 +26,7 @@ class InitMicroApps {
         baseUrl: Constants.baseUrl,
         client: DioInstances.dioClient(),
       ),
-    )
+    ),
   ];
 
   Future<void> initMicroApps() async {

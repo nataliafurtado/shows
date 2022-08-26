@@ -1,12 +1,16 @@
+import 'package:design_system/atom/text_field/search_text_field.dart';
 import 'package:design_system/theme_style.dart';
 import 'package:flutter/material.dart';
 
 class RegularAppBar extends StatelessWidget implements PreferredSizeWidget {
   const RegularAppBar({
     Key? key,
-    required this.onClick,
+    required this.onBackClick,
+    this.onSearchClick,
   }) : super(key: key);
-  final VoidCallback onClick;
+
+  final VoidCallback onBackClick;
+  final Function? onSearchClick;
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +20,13 @@ class RegularAppBar extends StatelessWidget implements PreferredSizeWidget {
         icon: const Icon(Icons.arrow_back_ios),
         color: ThemeStyle.themeType.colorType().secondary,
         iconSize: 20.0,
-        onPressed: onClick,
+        onPressed: onBackClick,
       ),
+      title: onSearchClick != null
+          ? SearchTextFIeld(
+              onSearchClick: onSearchClick!,
+            )
+          : const SizedBox.shrink(),
     );
   }
 

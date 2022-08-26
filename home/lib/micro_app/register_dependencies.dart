@@ -1,5 +1,7 @@
 import 'package:home/data/data_sources/get_shows_data_source_impl.dart';
+import 'package:home/data/data_sources/search_shows_data_source_impl.dart';
 import 'package:home/domain/use_cases/get_shows_use_case.dart';
+import 'package:home/domain/use_cases/search_shows_use_case.dart';
 import 'package:home/infrastructure/data_sources/get_shows_data_source.dart';
 import 'package:home/micro_app/home_dependencies.dart';
 import 'package:home/presentation/home/controller/home_controller.dart';
@@ -24,6 +26,20 @@ Future<void> registerDependencies({
   MicroApp.instanceManager.registerLazySingleton<HomeController>(
     () => HomeController(
       getShowsUseCase: MicroApp.instanceManager.get<GetShowsUseCase>(),
+    ),
+  );
+
+  MicroApp.instanceManager.registerFactory<SearchShowsDataSourceImpl>(
+    () => SearchShowsDataSourceImpl(
+      baseUrl: homeDependencies.baseUrl,
+      client: homeDependencies.client,
+    ),
+  );
+
+  MicroApp.instanceManager.registerFactory<SearchShowsUseCase>(
+    () => SearchShowsUseCase(
+      getShowsDataSource:
+          MicroApp.instanceManager.get<SearchShowsDataSourceImpl>(),
     ),
   );
 }

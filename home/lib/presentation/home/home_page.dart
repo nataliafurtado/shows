@@ -31,7 +31,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBarWidget(
         title: HomeStrings.appTitle,
-        onSearchIconClick: () {},
+        onSearchIconClick: () {
+          Navigator.of(context).pushNamed('/search_page');
+        },
       ),
       body: StateManagementWithRXNotBuilder(
         builder: (ctx) {
