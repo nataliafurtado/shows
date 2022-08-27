@@ -1,15 +1,16 @@
-import 'package:design_system/atom/text/text_two_fields.dart';
+import 'package:design_system/atom/text/text_title_widget.dart';
 import 'package:design_system/theme_style.dart';
-import 'package:entities/shows/entities/show.dart';
 import 'package:flutter/material.dart';
-import 'package:show_details/utils/show_details_strings.dart';
+import 'package:packages/exports.dart';
 
 class SummaryWidget extends StatelessWidget {
   const SummaryWidget({
     Key? key,
-    required this.show,
+    required this.name,
+    required this.summary,
   }) : super(key: key);
-  final Show show;
+  final String name;
+  final String summary;
 
   @override
   Widget build(BuildContext context) {
@@ -21,35 +22,20 @@ class SummaryWidget extends StatelessWidget {
           Radius.circular(sp.s2),
         ),
       ),
-      padding: EdgeInsets.all(sp.s2),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            ShowDetailsStrings.showInfo,
-            style: ThemeStyle.themeType.textType().l3,
-          ),
           SizedBox(height: sp.s4),
-          TextTwoFields(
-            '${ShowDetailsStrings.schedule}:',
-            '${loadDays(show.schedule.days)} at ${show.schedule.time}',
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: sp.s2),
+            child: TextTitleWidget(text: name),
           ),
-          SizedBox(height: sp.s2),
-          TextTwoFields(
-            '${ShowDetailsStrings.genres}:',
-            loadGenre(show.genres),
+          SizedBox(height: sp.s3),
+          Html(
+            data: summary,
           ),
-          SizedBox(height: sp.s2),
         ],
       ),
     );
-  }
-
-  String loadDays(List<String> days) {
-    return days.join(', ');
-  }
-
-  String loadGenre(List<String> days) {
-    return days.join(' | ');
   }
 }

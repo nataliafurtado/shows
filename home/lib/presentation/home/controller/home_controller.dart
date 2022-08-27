@@ -48,13 +48,16 @@ class HomeController {
   init() async {
     try {
       homePageState.value = HomePageState.loading;
-      await getShows(pageId: 0);
-      await getShows(pageId: 1);
-      await getShows(pageId: 2);
-      await getShows(pageId: 4);
+      await loadShows();
       homePageState.value = HomePageState.success;
     } catch (e) {
       homePageState.value = HomePageState.error;
+    }
+  }
+
+  loadShows() async {
+    for (var i = 0; i < 6; i++) {
+      await getShows(pageId: i);
     }
   }
 
@@ -70,6 +73,9 @@ class HomeController {
   loadNextPage() async {
     try {
       listPaginationState.value = ListPaginationState.loading;
+      for (var i = 0; i < 3; i++) {
+        await getShows();
+      }
       await getShows();
       listPaginationState.value = ListPaginationState.regular;
     } on FinishPaginationOfGetShows {

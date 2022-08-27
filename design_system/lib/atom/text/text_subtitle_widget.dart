@@ -1,8 +1,8 @@
 import 'package:design_system/theme_style.dart';
 import 'package:flutter/material.dart';
 
-class TextTitleWidget extends StatelessWidget {
-  const TextTitleWidget({
+class TextSubtitleWidget extends StatelessWidget {
+  const TextSubtitleWidget({
     Key? key,
     required this.text,
   }) : super(key: key);
@@ -11,7 +11,9 @@ class TextTitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: ThemeStyle.themeType.textType().l3,
+      style: ThemeStyle.themeType.textType().l2.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
     );
   }
 }

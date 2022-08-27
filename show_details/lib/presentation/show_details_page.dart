@@ -1,13 +1,12 @@
 import 'package:design_system/atom/widgets/image_widget.dart';
 import 'package:design_system/atom/app_bar/regular_app_bar.dart';
-import 'package:design_system/atom/text/text_title_widget.dart';
 import 'package:design_system/theme_style.dart';
 import 'package:entities/shows/entities/show.dart';
 import 'package:flutter/material.dart';
 import 'package:micro_app/micro_app.dart';
-import 'package:packages/exports.dart';
 import 'package:show_details/presentation/controller/show_details_controller.dart';
 import 'package:show_details/presentation/widgets/seasons_widget.dart';
+import 'package:show_details/presentation/widgets/show_info.dart';
 import 'package:show_details/presentation/widgets/summary_widget.dart';
 
 class ShowDetailsPage extends StatelessWidget {
@@ -40,26 +39,16 @@ class ShowDetailsPage extends StatelessWidget {
                 height: MediaQuery.of(context).size.width - sp.s12,
               ),
               SizedBox(height: sp.s4),
-              Container(
-                decoration: BoxDecoration(
-                  color: ThemeStyle.themeType.colorType().primary,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(sp.s2),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(height: sp.s6),
-                    TextTitleWidget(text: show.name),
-                    SizedBox(height: sp.s3),
-                    Html(
-                      data: show.summary,
-                    ),
-                  ],
-                ),
+              SummaryWidget(
+                name: show.name,
+                summary: show.summary,
               ),
               SizedBox(height: sp.s4),
-              SummaryWidget(show: show),
+              ShowInfoWidget(
+                days: show.schedule.days,
+                genres: show.genres,
+                time: show.schedule.time,
+              ),
               const SeasonWidget(),
               SizedBox(height: sp.s15),
             ],
