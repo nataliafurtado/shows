@@ -15,7 +15,12 @@ class SummaryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final sp = ThemeStyle.themeType.spaceTypes();
     return Container(
-      color: ThemeStyle.themeType.colorType().primary,
+      decoration: BoxDecoration(
+        color: ThemeStyle.themeType.colorType().primary,
+        borderRadius: BorderRadius.all(
+          Radius.circular(sp.s2),
+        ),
+      ),
       padding: EdgeInsets.all(sp.s2),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

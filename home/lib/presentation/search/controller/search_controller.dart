@@ -6,6 +6,7 @@ enum SearchPageState {
   loading,
   success,
   error,
+  initial,
 }
 
 class SearchController {
@@ -20,12 +21,14 @@ class SearchController {
   );
 
   final searchPageState = StateManagementWithRXNot<SearchPageState>(
-    SearchPageState.loading,
+    SearchPageState.initial,
   );
 
-  // int get getShowListsLength => showsLists.value.length;
+  int get getShowListLength => shows.value.length;
 
-  // ListPaginationState get getListPaginationState => listPaginationState.value;
+  List<Show> get getShowLists => shows.value;
+
+  SearchPageState get getSearchPageState => searchPageState.value;
 
   searchShow(String query) async {
     try {

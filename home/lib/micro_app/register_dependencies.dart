@@ -48,5 +48,6 @@ Future<void> registerDependencies({
     () => SearchController(
       searchShowsUseCase: MicroApp.instanceManager.get<SearchShowsUseCase>(),
     ),
+    pathToKeepInstanceAlive: '/search_page',
   );
 }

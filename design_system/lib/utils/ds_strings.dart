@@ -1,4 +1,4 @@
 class DSStrings {
-  static String anErroHasOccurred = 'Ocorreu um erro por favor tente de novo';
-  static String backToHome = 'Voltar para home';
+  static String anErroHasOccurred = 'An error has occurred, please try again';
+  static String tryAgain = 'Try again';
 }

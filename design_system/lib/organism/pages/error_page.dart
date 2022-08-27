@@ -27,7 +27,7 @@ class ErrorPage extends StatelessWidget {
           SizedBox(height: sp.s12),
           ButtonWidget(
             onPressed: onClick,
-            label: DSStrings.backToHome,
+            label: DSStrings.tryAgain,
           )
         ],
       ),

@@ -51,6 +51,7 @@ class HomeController {
       await getShows(pageId: 0);
       await getShows(pageId: 1);
       await getShows(pageId: 2);
+      await getShows(pageId: 4);
       homePageState.value = HomePageState.success;
     } catch (e) {
       homePageState.value = HomePageState.error;

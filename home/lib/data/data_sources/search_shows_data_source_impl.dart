@@ -27,10 +27,12 @@ class SearchShowsDataSourceImpl extends SearchShowsDataSource {
             (e) => SearchResponse.fromJson(e),
           )
           .toList();
-      final showList = <Show>[];
-      for (var search in searchs) {
-        showList.add(search.show.toShow());
-      }
+
+      final showList = searchs
+          .map(
+            (e) => e.show.toShow(),
+          )
+          .toList();
 
       return showList;
     } catch (_) {

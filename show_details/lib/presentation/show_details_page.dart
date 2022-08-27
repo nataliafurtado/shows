@@ -20,9 +20,8 @@ class ShowDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sp = ThemeStyle.themeType.spaceTypes();
-
     final controller = MicroApp.instanceManager.get<ShowDetailsController>();
-    controller.init(show.id);
+    controller.init(id: show.id);
     return Scaffold(
       appBar: RegularAppBar(
         onBackClick: () {
@@ -36,15 +35,28 @@ class ShowDetailsPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: sp.s2),
-              TextTitleWidget(text: show.name),
-              SizedBox(height: sp.s6),
               ImageWidget(
                 url: show.imageUrl,
-                height: 300,
+                height: MediaQuery.of(context).size.width - sp.s12,
               ),
               SizedBox(height: sp.s4),
-              Html(
-                data: show.summary,
+              Container(
+                decoration: BoxDecoration(
+                  color: ThemeStyle.themeType.colorType().primary,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(sp.s2),
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(height: sp.s6),
+                    TextTitleWidget(text: show.name),
+                    SizedBox(height: sp.s3),
+                    Html(
+                      data: show.summary,
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: sp.s4),
               SummaryWidget(show: show),

@@ -1,3 +1,4 @@
+import 'package:design_system/theme_style.dart';
 import 'package:flutter/material.dart';
 
 class LoadingWidget extends StatelessWidget {
@@ -19,10 +20,10 @@ class LoadingWidget extends StatelessWidget {
           visible: isLoading,
           child: Container(
             color: Colors.grey.withOpacity(0.3),
-            child: const Center(
+            child: Center(
               child: CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(
-                  Colors.grey,
+                  ThemeStyle.themeType.colorType().secondary,
                 ),
               ),
             ),

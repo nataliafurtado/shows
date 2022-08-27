@@ -46,37 +46,41 @@ class _HorizontalListState extends State<HorizontalList> {
   Widget build(BuildContext context) {
     final sp = ThemeStyle.themeType.spaceTypes();
     final shows = controller.getShowList(widget.index, page);
-
+    final space = sp.s3;
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       controller: _scrollController,
       primary: false,
-      child: Container(
-        height: 240,
-        padding: EdgeInsets.only(left: sp.s7),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: List.generate(
-            shows.length,
-            (indexShow) => Row(
-              children: [
-                ShowCard(
-                  name: shows[indexShow].name,
-                  imageUrl: shows[indexShow].imageUrl,
-                  onClick: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/show_details_page',
-                      arguments: shows[indexShow],
-                    );
-                  },
-                  ratio: 59 / 42,
-                  width: 150,
+      child: Padding(
+        padding: EdgeInsets.only(left: space),
+        child: Column(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: List.generate(
+                shows.length,
+                (indexShow) => Row(
+                  children: [
+                    ShowCard(
+                      name: shows[indexShow].name,
+                      imageUrl: shows[indexShow].imageUrl,
+                      onClick: () {
+                        Navigator.pushNamed(
+                          context,
+                          '/show_details_page',
+                          arguments: shows[indexShow],
+                        );
+                      },
+                      ratio: 59 / 42,
+                      width: 150,
+                    ),
+                    SizedBox(width: space),
+                  ],
                 ),
-                SizedBox(width: sp.s2),
-              ],
+              ),
             ),
-          ),
+            SizedBox(height: space),
+          ],
         ),
       ),
     );

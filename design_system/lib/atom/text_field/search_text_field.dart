@@ -1,7 +1,9 @@
+import 'dart:async';
+
 import 'package:design_system/theme_style.dart';
 import 'package:flutter/material.dart';
 
-class SearchTextFIeld extends StatelessWidget {
+class SearchTextFIeld extends StatefulWidget {
   const SearchTextFIeld({
     Key? key,
     required this.onSearchClick,
@@ -10,8 +12,16 @@ class SearchTextFIeld extends StatelessWidget {
   final Function onSearchClick;
 
   @override
+  State<SearchTextFIeld> createState() => _SearchTextFIeldState();
+}
+
+class _SearchTextFIeldState extends State<SearchTextFIeld> {
+  TextEditingController controller = TextEditingController();
+  Timer? _debounce;
+  final _duration = const Duration(milliseconds: 1200);
+
+  @override
   Widget build(BuildContext context) {
-    TextEditingController controller = TextEditingController();
     final sp = ThemeStyle.themeType.spaceTypes();
     return Container(
       width: double.infinity,
@@ -23,17 +33,22 @@ class SearchTextFIeld extends StatelessWidget {
       child: Center(
         child: TextField(
           controller: controller,
-          decoration: InputDecoration(
-            prefixIcon: IconButton(
-              icon: Icon(
-                Icons.search,
-                color: ThemeStyle.themeType.colorType().secondary,
-              ),
-              onPressed: () {
-                if (controller.text.isNotEmpty) {
-                  onSearchClick(controller.text);
+          onChanged: (text) {
+            if (_debounce?.isActive ?? false) _debounce!.cancel();
+            _debounce = Timer(
+              _duration,
+              () {
+                if (text.length >= 2) {
+                  widget.onSearchClick(controller.text);
+                  FocusScope.of(context).unfocus();
                 }
               },
+            );
+          },
+          decoration: InputDecoration(
+            prefixIcon: Icon(
+              Icons.search,
+              color: ThemeStyle.themeType.colorType().secondary,
             ),
             suffixIcon: IconButton(
               icon: Icon(
