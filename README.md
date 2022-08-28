@@ -5,8 +5,28 @@ Jobsity challenge project
 
 Proposal: Make a microapps architecture with abstracted technologies. Ideal for large teams and for projects with a long life cycle.
 
-####  * FLutter version 2.10.5|    
+I only did the mandatory features
 
+####  * use flutter version 2.10.5    
+
+## Instructions
+type make get to run flutter pub get\
+type make clean to run flutter clean\
+lauch.json:
+```
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Hml",
+            "program": "./shows/lib/main.dart",
+            "request": "launch",
+            "type": "dart",
+            "args": []
+        },
+    ]
+}
+```
 
 ## Architecture 
 
