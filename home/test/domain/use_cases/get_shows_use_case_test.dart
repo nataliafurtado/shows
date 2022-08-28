@@ -4,20 +4,21 @@ import 'package:home/domain/use_cases/get_shows_use_case.dart';
 import 'package:home/infrastructure/data_sources/get_shows_data_source.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'create_alias_use_case_test.mocks.dart';
+
+import 'get_shows_use_case_test.mocks.dart';
 
 @GenerateMocks([
   GetShowsDataSource,
 ])
 void main() {
-  late GetShowsDataSource createAliasDataSource;
+  late GetShowsDataSource getShowsDataSource;
   late GetShowsUseCase useCase;
 
   setUp(
     () {
-      createAliasDataSource = MockCreateAliasDataSource();
+      getShowsDataSource = MockGetShowsDataSource();
       useCase = GetShowsUseCase(
-        getShowsDataSource: createAliasDataSource,
+        getShowsDataSource: getShowsDataSource,
       );
     },
   );
@@ -26,11 +27,11 @@ void main() {
     'On Error',
     () {
       test(
-        'Should throw UnableToCreateAlias when createAliasDataSource.createAlias throws UnableToCreateAlias',
+        'Should throw UnableToGetShows when GetShowsDataSource.GetShows throws UnableToGetShows',
         () async {
           when(
-            createAliasDataSource.getShows(
-              url: '',
+            getShowsDataSource.getShows(
+              pageId: 1,
             ),
           ).thenThrow(
             UnableToGetShows(),
@@ -38,7 +39,7 @@ void main() {
 
           try {
             await useCase(
-              url: '',
+              pageId: 1,
             );
           } catch (e) {
             expect(e, isA<UnableToGetShows>());
@@ -47,22 +48,22 @@ void main() {
       );
 
       test(
-        'Should throw UnableToCreateAlias when createAliasDataSource.createAlias throws Exception',
+        'Should throw UnableToGetShows when GetShowsDataSource.GetShows throws Exception',
         () async {
           when(
-            createAliasDataSource.getShows(
-              url: '',
+            getShowsDataSource.getShows(
+              pageId: 1,
             ),
           ).thenThrow(
-            Exception(),
+            FinishPaginationOfGetShows(),
           );
 
           try {
             await useCase(
-              url: '',
+              pageId: 1,
             );
           } catch (e) {
-            expect(e, isA<UnableToGetShows>());
+            expect(e, isA<FinishPaginationOfGetShows>());
           }
         },
       );

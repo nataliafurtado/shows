@@ -1,8 +1,7 @@
-import 'package:design_system/atom/button/icon_button_widget.dart';
-import 'package:design_system/atom/text_field.dart/text_field_widget.dart';
+import 'package:design_system/atom/card/show_card.dart';
+import 'package:design_system/organism/pages/error_page.dart';
 import 'package:design_system/theme_style.dart';
 import 'package:design_system/utils/default_theme.dart';
-import 'package:entities/shows/alias.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:home/domain/use_cases/get_shows_use_case.dart';
@@ -14,6 +13,7 @@ import 'package:micro_app/instance_manager_mock.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
+import '../controller/constants.dart';
 import 'home_page_test.mocks.dart';
 
 @GenerateMocks(
@@ -22,28 +22,17 @@ import 'home_page_test.mocks.dart';
   ],
 )
 void main() {
-  late GetShowsUseCase createAliasUseCase;
+  late GetShowsUseCase getShowsUseCase;
   late HomeController homeController;
-
-  const String testOriginal = 'testOriginal';
-  const String testShort = 'testShort';
-  const String url = 'www.g1.com.br';
-
-  final aliases = [
-    const Alias(
-      originalURL: testOriginal,
-      shortURL: testShort,
-    ),
-  ];
 
   setUp(
     () async {
       ThemeStyle(DefaultTheme());
       MicroApp.instanceManager = InstanceManagerMock();
-      createAliasUseCase = MockCreateAliasUseCase();
+      getShowsUseCase = MockGetShowsUseCase();
 
       homeController = HomeController(
-        getShowsUseCase: createAliasUseCase,
+        getShowsUseCase: getShowsUseCase,
       );
       MicroApp.instanceManager.registerLazySingleton<HomeController>(
         () => homeController,
@@ -51,108 +40,59 @@ void main() {
     },
   );
 
-  tearDown(
-    () async {
-      homeController.aliases.value = [];
-    },
-  );
-  testWidgets(
-    'should correctly render a HomePage',
-    (tester) async {
-      homeController.aliases.value = aliases;
-
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: HomePage(),
-        ),
-      );
-
-      final urlFinder = find.text(HomeStrings.enterUrl);
-      final titleFinder = find.text(HomeStrings.recentlyShortenedUrls);
-      final testOriginalFinder = find.text(testOriginal);
-
-      expect(urlFinder, findsOneWidget);
-      expect(titleFinder, findsOneWidget);
-      expect(testOriginalFinder, findsOneWidget);
-      expect(
-        find.byType(
-          IconButtonWidget,
-        ),
-        findsOneWidget,
-      );
-    },
-  );
-
-  testWidgets(
-    'Should correctly add a new card in recently shortened urls',
-    (tester) async {
+  Future makeWhens() async {
+    for (var i = 0; i < 6; i++) {
       when(
-        createAliasUseCase(
-          url: url,
+        getShowsUseCase(
+          pageId: i,
         ),
       ).thenAnswer(
         (_) => Future.value(
-          const Alias(
-            originalURL: testOriginal,
-            shortURL: testShort,
-          ),
+          showsExpected,
         ),
       );
+    }
+  }
 
+  testWidgets(
+    'should correctly render a HomePage',
+    (tester) async {
+      await makeWhens();
       await tester.pumpWidget(
         const MaterialApp(
           home: HomePage(),
         ),
       );
 
-      final textField = find.widgetWithText(
-        TextFieldWidget,
-        HomeStrings.enterUrl,
-      );
+      await tester.pump();
+      final cardFinder = find.byType(ShowCard);
+      final titleFinder = find.text(HomeStrings.appTitle);
+      final iconFinder = find.byIcon(Icons.search);
 
-      final button = find.widgetWithIcon(
-        TextButton,
-        Icons.play_arrow_sharp,
-      );
-
-      await tester.enterText(textField, url);
-      await tester.tap(button);
-
-      await tester.pumpAndSettle();
-
-      final testOriginalFinder = find.text(testOriginal);
-      final testShortFinder = find.text(testShort);
-      expect(testOriginalFinder, findsOneWidget);
-      expect(testShortFinder, findsOneWidget);
+      expect(cardFinder, findsWidgets);
+      expect(titleFinder, findsOneWidget);
+      expect(iconFinder, findsOneWidget);
     },
   );
 
   testWidgets(
-    'Should  clean TextField when clean icon button is clicked',
+    'should correctly render a ErrorPage when getShowsUseCase throws Exception',
     (tester) async {
+      when(
+        getShowsUseCase(
+          pageId: 0,
+        ),
+      ).thenThrow(
+        Exception(),
+      );
       await tester.pumpWidget(
         const MaterialApp(
           home: HomePage(),
         ),
       );
-
-      final textField = find.widgetWithText(
-        TextFieldWidget,
-        HomeStrings.enterUrl,
-      );
-      await tester.enterText(textField, url);
-      await tester.pumpAndSettle();
-      final urlFinder = find.text(url);
-      expect(urlFinder, findsOneWidget);
-
-      final button = find.byType(
-        IconButton,
-      );
-      await tester.tap(button);
-      await tester.pumpAndSettle();
-
-      final enterUrlFinder = find.text(HomeStrings.enterUrl);
-      expect(enterUrlFinder, findsOneWidget);
+      await tester.pump();
+      final errorFinder = find.byType(ErrorPage);
+      expect(errorFinder, findsWidgets);
     },
   );
 }

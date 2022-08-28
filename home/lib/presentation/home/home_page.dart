@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
 
           if (pageState == HomePageState.error) {
             return ErrorPage(
-              onClick: controller.init(),
+              onClick: controller.init,
             );
           }
           return LoadingWidget(

@@ -39,7 +39,7 @@ Future<void> registerDependencies({
 
   MicroApp.instanceManager.registerFactory<SearchShowsUseCase>(
     () => SearchShowsUseCase(
-      getShowsDataSource:
+      searchShowsDataSource:
           MicroApp.instanceManager.get<SearchShowsDataSourceImpl>(),
     ),
   );

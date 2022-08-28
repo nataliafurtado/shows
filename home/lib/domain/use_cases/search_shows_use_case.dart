@@ -3,16 +3,16 @@ import 'package:home/domain/exceptions/search_shows_exceptions.dart';
 import 'package:home/infrastructure/data_sources/search_shows_data_source.dart';
 
 class SearchShowsUseCase {
-  final SearchShowsDataSource getShowsDataSource;
+  final SearchShowsDataSource searchShowsDataSource;
   SearchShowsUseCase({
-    required this.getShowsDataSource,
+    required this.searchShowsDataSource,
   });
 
   Future<List<Show>> call({
     required String query,
   }) async {
     try {
-      return await getShowsDataSource.searchShows(
+      return await searchShowsDataSource.searchShows(
         query: query,
       );
     } catch (_) {

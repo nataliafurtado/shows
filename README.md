@@ -1,35 +1,38 @@
 
-# Flutter Link Shortener 
+# Flutter Shows Maze Tv project 
 
-Projeto de teste Nubank
+Jobsity challenge project
 
-Proposta: Fazer uma arquitetura de microapps com tecnologias abstraídas. Idealizadas para grande times e para projetos com longo ciclo de vida.
+Proposal: Make a microapps architecture with abstracted technologies. Ideal for large teams and for projects with a long life cycle.
 
-###  * Utilizado versão do FLutter 2.10.5
-
-## Arquitetura utilizada
-
-- Utilizada arquitetura d `micro apps` e `packages`.
-- Criado `Instance manager` para gerenciar instancias entre micro apps.
-- Criado `MicroAppDependencies`para comunicação entre microapps.
-- Criado lógica no instance manager para abrir e fechar instancias de acordo como a rotas de navegação.
-- Criado package de controle de estado.
-    - Utilizado abstração para MOBX e para RXNotifier. (Utilizado duas para fins de demosntração dos conceitos.)
-- Criado `Packages`para centralizar as bibliotecas entre microapps. (Todos usarem as mesmas versões)
-- Criado início de um design system com modelo atômico.
-- Criado makefile.
-- Utilzado `clean arquitecture` na parte de infraestrutura. 
-- Criado `entities` para reutilizar entidades entre microapps
+####  * FLutter version 2.10.5|    
 
 
-## Testes
+## Architecture 
 
-- Feito teste no dataSource com mockWebServer para testar exceptions, mapper e configurações de client. 
-- Feito testes nos controlles para testar logica da view
-- Feito teste de widget para testar logica da página
-- Feito golden teste para testar layout da página 
+- Architecture of `micro apps` and `packages`.
+- `home microapp` contains the list of series and search page logic
+-`show_details microapp` contains the show details logic
+- Created `Instance manager` to manage instances between micro apps.
+- Created `MicroAppDependencies`for communication between microapps.
+- Created logic in instance manager to open and close instances according to navigation routes.
+- Created `State manager` package.
+    - Used abstraction with MOBX and with RXNotifier.
+- Created `Packages` to centralize libraries between microapps. (All use the same versions)
+- Created beginning of a design system with atomic model.
+- Created makefile.
+- Used `clean architecture` 
+- Created `entities` library to reuse entities and models between microapps
+
+
+## Tests
+
+- Tested on dataSource with mockWebServer to test exceptions, mapper and client configurations.
+- Made tests on the controls to test view logic
+- Made widget testing to test page logic
 
 
 
-*Por uma questão de tempo não foi feito microap de tagueamento, de gerencimaneto de strings e de logger. 
+*Tests were only done in home microapp. \
+**Não foi feito microap de tagueamento, de gerencimaneto de strings e de logger por uma questão de tempo. 
 

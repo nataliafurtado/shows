@@ -61,6 +61,14 @@ class HomeController {
     }
   }
 
+  getShows({int? pageId}) async {
+    final shows = await getShowsUseCase(
+      pageId: pageId ?? getNextPage(),
+    );
+    showsLists.value.add(shows);
+    lastId = shows.last.id;
+  }
+
   List<Show> getShowList(int index, int page) {
     final length = showsLists.value[index].length;
     int quantityToLoad = page * 10;
@@ -73,24 +81,15 @@ class HomeController {
   loadNextPage() async {
     try {
       listPaginationState.value = ListPaginationState.loading;
-      for (var i = 0; i < 3; i++) {
+      for (var i = 0; i < 4; i++) {
         await getShows();
       }
-      await getShows();
       listPaginationState.value = ListPaginationState.regular;
     } on FinishPaginationOfGetShows {
       listPaginationState.value = ListPaginationState.finish;
     } catch (e) {
       listPaginationState.value = ListPaginationState.error;
     }
-  }
-
-  getShows({int? pageId}) async {
-    final shows = await getShowsUseCase(
-      pageId: pageId ?? getNextPage(),
-    );
-    showsLists.value.add(shows);
-    lastId = shows.last.id;
   }
 
   int getNextPage() {

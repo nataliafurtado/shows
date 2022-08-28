@@ -30,6 +30,12 @@ class _ListWidgetState extends State<ListWidget> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    _throttle.cancel();
+    super.dispose();
+  }
+
   void _scrollListener() {
     if (_scrollController.position.extentAfter < _remainingScrollSize) {
       if (_throttle.isActive) {

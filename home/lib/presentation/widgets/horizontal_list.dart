@@ -31,6 +31,12 @@ class _HorizontalListState extends State<HorizontalList> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    _throttle.cancel();
+    super.dispose();
+  }
+
   void _scrollListener() {
     if (_scrollController.position.extentAfter < _remainingScrollSize) {
       if (_throttle.isActive) {
