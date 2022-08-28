@@ -32,7 +32,10 @@ class EpisodeModal extends StatelessWidget {
                     errorWidget: (context, url, error) =>
                         const PlaceHolderWidget(),
                     progressIndicatorBuilder: (context, url, progress) =>
-                        const LoadingCenterWidget(),
+                        const LoadingCenterWidget(
+                      height: 25,
+                      width: 25,
+                    ),
                   ),
                 ),
                 Expanded(
@@ -41,6 +44,7 @@ class EpisodeModal extends StatelessWidget {
                       Container(
                         width: double.infinity,
                         alignment: Alignment.center,
+                        padding: EdgeInsets.symmetric(horizontal: sp.s2),
                         child: Text(
                           episode.name,
                           style: ThemeStyle.themeType.textType().l2,
@@ -63,7 +67,7 @@ class EpisodeModal extends StatelessWidget {
             Html(
               data: episode.summary,
             ),
-            SizedBox(height: sp.s5),
+            SizedBox(height: sp.s10),
           ],
         ),
       ),

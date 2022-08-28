@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 class ErrorPage extends StatelessWidget {
   const ErrorPage({
     Key? key,
-    required this.onClick,
+    this.onClick,
   }) : super(key: key);
-  final VoidCallback onClick;
+  final VoidCallback? onClick;
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +25,11 @@ class ErrorPage extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           SizedBox(height: sp.s12),
-          ButtonWidget(
-            onPressed: onClick,
-            label: DSStrings.tryAgain,
-          )
+          if (onClick != null)
+            ButtonWidget(
+              onPressed: onClick!,
+              label: DSStrings.tryAgain,
+            )
         ],
       ),
     );

@@ -11,9 +11,7 @@ class TextSubtitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: ThemeStyle.themeType.textType().l2.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
+      style: ThemeStyle.themeType.textType().l2.copyWith(),
     );
   }
 }

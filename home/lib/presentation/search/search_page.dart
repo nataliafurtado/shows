@@ -1,6 +1,7 @@
 import 'package:design_system/atom/app_bar/regular_app_bar.dart';
 import 'package:design_system/atom/card/show_card.dart';
 import 'package:design_system/atom/widgets/loading_center_widget.dart';
+import 'package:design_system/organism/pages/error_page.dart';
 import 'package:flutter/material.dart';
 import 'package:home/presentation/search/controller/search_controller.dart';
 import 'package:micro_app/micro_app.dart';
@@ -29,7 +30,7 @@ class SearchPage extends StatelessWidget {
           }
 
           if (controller.getSearchPageState == SearchPageState.error) {
-            return const LoadingCenterWidget();
+            return const ErrorPage();
           }
 
           if (controller.getSearchPageState == SearchPageState.initial) {

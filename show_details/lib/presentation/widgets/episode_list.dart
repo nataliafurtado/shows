@@ -24,13 +24,23 @@ class EpisodeList extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextSubtitleWidget(
-              text:
-                  '${ShowDetailsStrings.season} ${lisPaginationState[index].seasonId}',
+            Row(
+              children: [
+                TextSubtitleWidget(
+                  text:
+                      '${ShowDetailsStrings.season} ${lisPaginationState[index].seasonId}',
+                ),
+                SizedBox(width: sp.s2),
+                const Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: Colors.grey,
+                  size: 15,
+                )
+              ],
             ),
             SizedBox(height: sp.s2),
             EpisodeHorizontalList(index: index),
-            SizedBox(height: sp.s2),
+            SizedBox(height: sp.s6),
           ],
         );
       },

@@ -25,7 +25,10 @@ class ImageWidget extends StatelessWidget {
         fit: BoxFit.fitHeight,
         errorWidget: (context, url, error) => const PlaceHolderWidget(),
         progressIndicatorBuilder: (context, url, progress) =>
-            const LoadingCenterWidget(),
+            const LoadingCenterWidget(
+          height: 25,
+          width: 25,
+        ),
       ),
     );
   }

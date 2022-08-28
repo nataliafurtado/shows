@@ -36,7 +36,7 @@ class ShowsTheme implements ThemeType {
   @override
   ColorTypes colorType() => ColorTypes(
         primary: const Color(0XFFE9E9E9),
-        secondary: Colors.pink,
+        secondary: const Color(0XFF3C948B),
         auxiliary: Colors.amber,
       );
 

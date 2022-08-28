@@ -37,7 +37,10 @@ class ShowCard extends StatelessWidget {
                 height: height,
                 errorWidget: (context, url, error) => const PlaceHolderWidget(),
                 progressIndicatorBuilder: (context, url, progress) =>
-                    const LoadingCenterWidget(),
+                    const LoadingCenterWidget(
+                  height: 25,
+                  width: 25,
+                ),
               ),
               Positioned(
                 bottom: 0,
