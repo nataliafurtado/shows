@@ -1,8 +1,6 @@
 
 # Flutter Shows Maze Tv project 
 
-Jobsity challenge project
-
 Proposal: Make a microapps architecture with abstracted technologies. Ideal for large teams and for projects with a long life cycle.
 
 I only did the mandatory features
