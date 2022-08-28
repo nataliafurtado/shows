@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppBarWidget({
     Key? key,
-    required this.title,
     required this.onSearchIconClick,
+    required this.onChangeIconClick,
   }) : super(key: key);
-  final String title;
+
   final VoidCallback onSearchIconClick;
+  final VoidCallback onChangeIconClick;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -17,11 +18,24 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: ThemeStyle.themeType.colorType().primary,
-      title: SizedBox(
-        height: 30,
-        child: Image.asset(
-          'assets/tvm.png',
-          package: 'home',
+      leading: Padding(
+        padding: const EdgeInsets.only(left: 20.0),
+        child: GestureDetector(
+          onTap: onChangeIconClick,
+          child: Icon(
+            Icons.change_circle_outlined,
+            color: ThemeStyle.themeType.colorType().secondary,
+            size: 26.0,
+          ),
+        ),
+      ),
+      title: Center(
+        child: SizedBox(
+          height: 30,
+          child: Image.asset(
+            'assets/tvm.png',
+            package: 'home',
+          ),
         ),
       ),
       actions: <Widget>[

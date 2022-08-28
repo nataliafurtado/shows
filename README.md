@@ -11,25 +11,25 @@ Proposal: Make a microapps architecture with abstracted technologies. Ideal for 
 ## Architecture 
 
 - Architecture of `micro apps` and `packages`.
-- `home microapp` contains the list of series and search page logic
--`show_details microapp` contains the show details logic
-- Created `Instance manager` to manage instances between micro apps.
-- Created `MicroAppDependencies`for communication between microapps.
-- Created logic in instance manager to open and close instances according to navigation routes.
-- Created `State manager` package.
+- `home` is a microapp that contains the list of series and search page logic
+-`show_details` is a microapp that contains the show details logic
+- `instance_manager` is a package to manage instances between micro apps.
+    - Created logic in instance manager to open and close instances according to navigation routes.
+- `micro_app_dependencies` is class used for communication between microapps.
+- `state_manager` is a package to do state manager.
     - Used abstraction with MOBX and with RXNotifier.
-- Created `Packages` to centralize libraries between microapps. (All use the same versions)
-- Created beginning of a design system with atomic model.
-- Created makefile.
+- `packages` is a package to centralize libraries between microapps. (ensure that all microapps use the same versions)
+- `design_system` is a package to manage the widgets.
+    - Uses atomic model.
 - Used `clean architecture` 
-- Created `entities` library to reuse entities and models between microapps
+- Created `entities` package to reuse entities and models between microapps.
 
 
 ## Tests
 
 - Tested on dataSource with mockWebServer to test exceptions, mapper and client configurations.
-- Made tests on the controls to test view logic
-- Made widget testing to test page logic
+- Made tests on the controls to test business logic
+- Made widget testing to test view logic
 
 
 

@@ -45,6 +45,12 @@ class HomeController {
 
   int lastId = 0;
 
+  final isToTextOverflowCard = StateManagementWithRXNot<bool>(
+    false,
+  );
+
+  bool get getIsToTextOverflowCard => isToTextOverflowCard.value;
+
   init() async {
     try {
       homePageState.value = HomePageState.loading;
@@ -95,5 +101,9 @@ class HomeController {
   int getNextPage() {
     final lastPage = lastId / 250;
     return lastPage.round() + 1;
+  }
+
+  changeShowCardTextOverflow() {
+    isToTextOverflowCard.value = !isToTextOverflowCard.value;
   }
 }

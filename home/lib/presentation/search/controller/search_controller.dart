@@ -7,6 +7,7 @@ enum SearchPageState {
   success,
   error,
   initial,
+  noShowsWereFound,
 }
 
 class SearchController {
@@ -34,7 +35,12 @@ class SearchController {
     try {
       searchPageState.value = SearchPageState.loading;
       shows.value = await searchShowsUseCase(query: query);
-      searchPageState.value = SearchPageState.success;
+
+      if (shows.value.isEmpty) {
+        searchPageState.value = SearchPageState.noShowsWereFound;
+      } else {
+        searchPageState.value = SearchPageState.success;
+      }
     } catch (e) {
       searchPageState.value = SearchPageState.error;
     }
@@ -42,5 +48,6 @@ class SearchController {
 
   cleanSearch() async {
     shows.value = [];
+    searchPageState.value = SearchPageState.success;
   }
 }

@@ -1,3 +1,3 @@
 class HomeStrings {
-  static String appTitle = 'TV Maze';
+  static String noShows = 'no shows were found';
 }

@@ -4,7 +4,6 @@ import 'package:design_system/atom/app_bar/app_bar_widget.dart';
 import 'package:design_system/layout/loading_widget.dart';
 import 'package:home/presentation/home/controller/home_controller.dart';
 import 'package:home/presentation/home/controller/list_widget.dart';
-import 'package:home/utils/home_strings.dart';
 import 'package:micro_app/micro_app.dart';
 import 'package:state_management/state_manager_with_rx_not.dart';
 
@@ -30,9 +29,11 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBarWidget(
-        title: HomeStrings.appTitle,
         onSearchIconClick: () {
           Navigator.of(context).pushNamed('/search_page');
+        },
+        onChangeIconClick: () {
+          controller.changeShowCardTextOverflow();
         },
       ),
       body: StateManagementWithRXNotBuilder(

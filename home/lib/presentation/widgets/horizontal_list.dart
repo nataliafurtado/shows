@@ -7,11 +7,13 @@ import 'package:home/presentation/home/controller/home_controller.dart';
 import 'package:micro_app/micro_app.dart';
 
 class HorizontalList extends StatefulWidget {
-  const HorizontalList(
-    this.index, {
+  const HorizontalList({
+    required this.index,
+    required this.isToTextOverflowCard,
     Key? key,
   }) : super(key: key);
   final int index;
+  final bool isToTextOverflowCard;
 
   @override
   State<HorizontalList> createState() => _HorizontalListState();
@@ -20,7 +22,6 @@ class HorizontalList extends StatefulWidget {
 class _HorizontalListState extends State<HorizontalList> {
   static const _remainingScrollSize = 100;
   late ScrollController _scrollController;
-  Timer _throttle = Timer(const Duration(milliseconds: 10), () {});
   late HomeController controller;
   int page = 1;
 
@@ -31,18 +32,8 @@ class _HorizontalListState extends State<HorizontalList> {
     super.initState();
   }
 
-  @override
-  void dispose() {
-    _throttle.cancel();
-    super.dispose();
-  }
-
   void _scrollListener() {
     if (_scrollController.position.extentAfter < _remainingScrollSize) {
-      if (_throttle.isActive) {
-        return;
-      }
-      _throttle = Timer(const Duration(milliseconds: 1000), () {});
       controller.getShowList(widget.index, page++);
       setState(() {});
     }
@@ -79,6 +70,7 @@ class _HorizontalListState extends State<HorizontalList> {
                       },
                       ratio: 59 / 42,
                       width: 150,
+                      isToTextOverflowCard: widget.isToTextOverflowCard,
                     ),
                     SizedBox(width: space),
                   ],

@@ -54,42 +54,44 @@ class _ListWidgetState extends State<ListWidget> {
   @override
   Widget build(BuildContext context) {
     final sp = ThemeStyle.themeType.spaceTypes();
-    return Container(
-      color: ThemeStyle.themeType.colorType().primary,
-      child: Column(
-        children: [
-          Expanded(
-            child: StateManagementWithRXNotBuilder(
-              builder: (ctx) {
-                final lisPaginationState = controller.getListPaginationState;
-                return ListView.builder(
-                  controller: _scrollController,
-                  itemCount: controller.getShowListsLength + 1,
-                  padding: EdgeInsets.only(top: sp.s5),
-                  itemBuilder: (ctx, index) {
-                    if (index >= controller.getShowListsLength) {
-                      if (lisPaginationState == ListPaginationState.loading) {
-                        return const SizedBox(
-                          height: 150,
-                          child: LoadingCenterWidget(),
-                        );
-                      }
-                      if (lisPaginationState == ListPaginationState.error) {
-                        return const ListWidgetError();
-                      }
-                      if (lisPaginationState == ListPaginationState.finish) {
-                        return const ListWidgetFinish();
-                      }
-                      return const SizedBox.shrink();
+    return Column(
+      children: [
+        Expanded(
+          child: StateManagementWithRXNotBuilder(
+            builder: (ctx) {
+              final lisPaginationState = controller.getListPaginationState;
+              final bool isToTextOverflowCar =
+                  controller.getIsToTextOverflowCard;
+              return ListView.builder(
+                controller: _scrollController,
+                itemCount: controller.getShowListsLength + 1,
+                padding: EdgeInsets.only(top: sp.s5),
+                itemBuilder: (ctx, index) {
+                  if (index >= controller.getShowListsLength) {
+                    if (lisPaginationState == ListPaginationState.loading) {
+                      return const SizedBox(
+                        height: 150,
+                        child: LoadingCenterWidget(),
+                      );
                     }
-                    return HorizontalList(index);
-                  },
-                );
-              },
-            ),
+                    if (lisPaginationState == ListPaginationState.error) {
+                      return const ListWidgetError();
+                    }
+                    if (lisPaginationState == ListPaginationState.finish) {
+                      return const ListWidgetFinish();
+                    }
+                    return const SizedBox.shrink();
+                  }
+                  return HorizontalList(
+                    index: index,
+                    isToTextOverflowCard: isToTextOverflowCar,
+                  );
+                },
+              );
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

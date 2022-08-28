@@ -74,7 +74,10 @@ class _ListWidgetState extends State<ListWidget> {
                     }
                     return const SizedBox.shrink();
                   }
-                  return HorizontalList(index);
+                  return HorizontalList(
+                    index: index,
+                    isToTextOverflowCard: true,
+                  );
                 },
               );
             },

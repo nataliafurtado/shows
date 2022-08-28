@@ -39,6 +39,7 @@ class EpisodeHorizontalList extends StatelessWidget {
                 },
                 ratio: 14 / 25,
                 width: 200,
+                isToTextOverflowCard: false,
               ),
               SizedBox(width: sp.s2),
             ],

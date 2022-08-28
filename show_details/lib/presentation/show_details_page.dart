@@ -23,6 +23,7 @@ class ShowDetailsPage extends StatelessWidget {
     controller.init(id: show.id);
     return Scaffold(
       appBar: RegularAppBar(
+        showBackIcon: true,
         onBackClick: () {
           Navigator.pop(context);
         },

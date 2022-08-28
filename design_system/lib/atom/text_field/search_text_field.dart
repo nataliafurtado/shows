@@ -8,10 +8,12 @@ class SearchTextFIeld extends StatefulWidget {
     Key? key,
     required this.onSearchClick,
     this.onTrashClick,
+    required this.onBackClick,
   }) : super(key: key);
 
   final Function onSearchClick;
   final Function? onTrashClick;
+  final Function? onBackClick;
 
   @override
   State<SearchTextFIeld> createState() => _SearchTextFIeldState();
@@ -27,7 +29,7 @@ class _SearchTextFIeldState extends State<SearchTextFIeld> {
     final sp = ThemeStyle.themeType.spaceTypes();
     return Container(
       width: double.infinity,
-      height: 40,
+      height: 45,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(sp.s2),
@@ -48,9 +50,14 @@ class _SearchTextFIeldState extends State<SearchTextFIeld> {
             );
           },
           decoration: InputDecoration(
-            prefixIcon: Icon(
-              Icons.search,
-              color: ThemeStyle.themeType.colorType().secondary,
+            prefixIcon: IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: ThemeStyle.themeType.colorType().secondary,
+              ),
+              onPressed: () {
+                widget.onBackClick?.call();
+              },
             ),
             suffixIcon: IconButton(
               icon: Icon(

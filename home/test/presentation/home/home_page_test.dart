@@ -7,7 +7,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:home/domain/use_cases/get_shows_use_case.dart';
 import 'package:home/presentation/home/controller/home_controller.dart';
 import 'package:home/presentation/home/home_page.dart';
-import 'package:home/utils/home_strings.dart';
 import 'package:micro_app/micro_app.dart';
 import 'package:micro_app/instance_manager_mock.dart';
 import 'package:mockito/annotations.dart';

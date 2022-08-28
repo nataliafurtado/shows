@@ -11,8 +11,9 @@ class SearchPageSuccess extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = MicroApp.instanceManager.get<SearchController>();
     return AlignedGridView.count(
+      padding: EdgeInsets.only(top: 12),
       crossAxisCount: 3,
-      mainAxisSpacing: 0,
+      mainAxisSpacing: 10,
       crossAxisSpacing: 5,
       itemCount: controller.getShowListLength,
       itemBuilder: (context, index) {
@@ -27,7 +28,8 @@ class SearchPageSuccess extends StatelessWidget {
             );
           },
           ratio: 59 / 42,
-          width: 150,
+          width: 140,
+          isToTextOverflowCard: false,
         );
       },
     );
