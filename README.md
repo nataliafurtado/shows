@@ -34,5 +34,5 @@ Proposal: Make a microapps architecture with abstracted technologies. Ideal for 
 
 
 *Tests were only done in home microapp. \
-**Não foi feito microap de tagueamento, de gerencimaneto de strings e de logger por uma questão de tempo. 
+**Tag, string management and logger microapps was not made for a matter of time.
 
