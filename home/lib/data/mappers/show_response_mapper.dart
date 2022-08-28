@@ -12,6 +12,8 @@ extension ShowsResponseMapper on ShowResponse {
       genres: genres,
       schedule: schedule.toSchedule(),
       summary: summary ?? '',
+      status: status ?? '',
+      type: type ?? '',
     );
   }
 }

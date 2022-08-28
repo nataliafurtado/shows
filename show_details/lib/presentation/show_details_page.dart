@@ -48,6 +48,8 @@ class ShowDetailsPage extends StatelessWidget {
                 days: show.schedule.days,
                 genres: show.genres,
                 time: show.schedule.time,
+                status: show.status,
+                type: show.type,
               ),
               const SeasonWidget(),
               SizedBox(height: sp.s15),

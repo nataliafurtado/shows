@@ -16,16 +16,12 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: const SizedBox(
-        width: 40,
-      ),
       backgroundColor: ThemeStyle.themeType.colorType().primary,
-      title: Center(
-        child: Text(
-          title,
-          style: TextStyle(
-            color: ThemeStyle.themeType.colorType().secondary,
-          ),
+      title: SizedBox(
+        height: 30,
+        child: Image.asset(
+          'assets/tvm.png',
+          package: 'home',
         ),
       ),
       actions: <Widget>[

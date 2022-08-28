@@ -66,11 +66,9 @@ void main() {
 
       await tester.pump();
       final cardFinder = find.byType(ShowCard);
-      final titleFinder = find.text(HomeStrings.appTitle);
       final iconFinder = find.byIcon(Icons.search);
 
       expect(cardFinder, findsWidgets);
-      expect(titleFinder, findsOneWidget);
       expect(iconFinder, findsOneWidget);
     },
   );

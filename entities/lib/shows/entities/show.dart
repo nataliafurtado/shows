@@ -4,6 +4,8 @@ import 'package:entities/shows/entities/serie.dart';
 class Show extends Serie {
   final Schedule schedule;
   final List<String> genres;
+  final String type;
+  final String status;
 
   const Show({
     required int id,
@@ -13,6 +15,8 @@ class Show extends Serie {
     required String summary,
     required this.schedule,
     required this.genres,
+    required this.type,
+    required this.status,
   }) : super(
           id: id,
           name: name,
@@ -28,5 +32,7 @@ class Show extends Serie {
         schedule,
         genres,
         summary,
+        type,
+        status,
       ];
 }

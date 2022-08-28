@@ -19,7 +19,7 @@ class EpisodeList extends StatelessWidget {
       shrinkWrap: true,
       itemCount: lisPaginationState.length,
       physics: const NeverScrollableScrollPhysics(),
-      padding: EdgeInsets.only(top: sp.s7),
+      padding: EdgeInsets.only(top: sp.s3),
       itemBuilder: (ctx, index) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +40,7 @@ class EpisodeList extends StatelessWidget {
             ),
             SizedBox(height: sp.s2),
             EpisodeHorizontalList(index: index),
-            SizedBox(height: sp.s6),
+            SizedBox(height: sp.s3),
           ],
         );
       },

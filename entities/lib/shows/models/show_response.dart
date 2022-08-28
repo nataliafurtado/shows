@@ -9,6 +9,8 @@ part 'show_response.g.dart';
 class ShowResponse extends SerieResponse {
   final ScheduleResponse schedule;
   final List<String> genres;
+  final String? type;
+  final String? status;
 
   const ShowResponse({
     required int id,
@@ -18,6 +20,8 @@ class ShowResponse extends SerieResponse {
     String? summary,
     required this.schedule,
     required this.genres,
+    this.type,
+    this.status,
   }) : super(
           id: id,
           name: name,
@@ -35,6 +39,8 @@ class ShowResponse extends SerieResponse {
         schedule,
         genres,
         summary,
+        type,
+        status,
       ];
 
   factory ShowResponse.fromJson(Map<String, dynamic> json) =>

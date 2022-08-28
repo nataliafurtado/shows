@@ -10,10 +10,14 @@ class ShowInfoWidget extends StatelessWidget {
     required this.days,
     required this.time,
     required this.genres,
+    required this.type,
+    required this.status,
   }) : super(key: key);
   final List<String> days;
   final String time;
   final List<String> genres;
+  final String type;
+  final String status;
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +44,25 @@ class ShowInfoWidget extends StatelessWidget {
               '${ShowDetailsStrings.schedule}:',
               loadSchedule(),
             ),
-          SizedBox(height: sp.s2),
+          if (days.isNotEmpty || time.isNotEmpty) SizedBox(height: sp.s2),
           if (genres.isNotEmpty)
             TextTwoFields(
               '${ShowDetailsStrings.genres}:',
               loadGenre(),
             ),
+          if (genres.isNotEmpty) SizedBox(height: sp.s2),
+          if (status.isNotEmpty)
+            TextTwoFields(
+              '${ShowDetailsStrings.status}:',
+              status,
+            ),
+          if (status.isNotEmpty) SizedBox(height: sp.s2),
+          if (type.isNotEmpty)
+            TextTwoFields(
+              '${ShowDetailsStrings.showType}:',
+              type,
+            ),
+          if (type.isNotEmpty) SizedBox(height: sp.s2),
           SizedBox(height: sp.s2),
         ],
       ),

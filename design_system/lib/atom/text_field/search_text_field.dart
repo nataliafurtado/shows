@@ -7,9 +7,11 @@ class SearchTextFIeld extends StatefulWidget {
   const SearchTextFIeld({
     Key? key,
     required this.onSearchClick,
+    this.onTrashClick,
   }) : super(key: key);
 
   final Function onSearchClick;
+  final Function? onTrashClick;
 
   @override
   State<SearchTextFIeld> createState() => _SearchTextFIeldState();
@@ -18,7 +20,7 @@ class SearchTextFIeld extends StatefulWidget {
 class _SearchTextFIeldState extends State<SearchTextFIeld> {
   TextEditingController controller = TextEditingController();
   Timer? _debounce;
-  final _duration = const Duration(milliseconds: 1200);
+  final _duration = const Duration(milliseconds: 1500);
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +59,7 @@ class _SearchTextFIeldState extends State<SearchTextFIeld> {
               ),
               onPressed: () {
                 controller.clear();
+                widget.onTrashClick?.call();
               },
             ),
             hintText: 'Search...',

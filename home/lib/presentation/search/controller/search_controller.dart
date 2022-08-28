@@ -39,4 +39,8 @@ class SearchController {
       searchPageState.value = SearchPageState.error;
     }
   }
+
+  cleanSearch() async {
+    shows.value = [];
+  }
 }

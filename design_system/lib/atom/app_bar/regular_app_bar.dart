@@ -7,10 +7,12 @@ class RegularAppBar extends StatelessWidget implements PreferredSizeWidget {
     Key? key,
     required this.onBackClick,
     this.onSearchClick,
+    this.onTrashClick,
   }) : super(key: key);
 
   final VoidCallback onBackClick;
   final Function? onSearchClick;
+  final Function? onTrashClick;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class RegularAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: onSearchClick != null
           ? SearchTextFIeld(
               onSearchClick: onSearchClick!,
+              onTrashClick: onTrashClick,
             )
           : const SizedBox.shrink(),
     );

@@ -53,6 +53,8 @@ void main() {
         'Science-Fiction',
         'Thriller',
       ],
+      status: 'Ended',
+      type: 'Scripted',
     ),
   ];
 

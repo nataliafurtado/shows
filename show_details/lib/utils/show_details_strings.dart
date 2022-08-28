@@ -6,4 +6,6 @@ class ShowDetailsStrings {
   static String season = 'Season';
   static String epi = 'Epi.';
   static String episode = 'Episode';
+  static String status = 'Status';
+  static String showType = 'Show Type';
 }

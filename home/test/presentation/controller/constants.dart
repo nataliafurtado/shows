@@ -20,6 +20,8 @@ const show = Show(
     'Science-Fiction',
     'Thriller',
   ],
+  status: 'Ended',
+  type: 'Scripted',
 );
 
 const showsExpected = [
@@ -42,6 +44,8 @@ const showsExpected = [
       'Science-Fiction',
       'Thriller',
     ],
+    status: 'Ended',
+    type: 'Scripted',
   ),
 ];
 

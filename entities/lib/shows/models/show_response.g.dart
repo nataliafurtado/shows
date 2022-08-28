@@ -18,6 +18,8 @@ ShowResponse _$ShowResponseFromJson(Map<String, dynamic> json) => ShowResponse(
           ScheduleResponse.fromJson(json['schedule'] as Map<String, dynamic>),
       genres:
           (json['genres'] as List<dynamic>).map((e) => e as String).toList(),
+      type: json['type'] as String?,
+      status: json['status'] as String?,
     );
 
 Map<String, dynamic> _$ShowResponseToJson(ShowResponse instance) =>
@@ -29,4 +31,6 @@ Map<String, dynamic> _$ShowResponseToJson(ShowResponse instance) =>
       'summary': instance.summary,
       'schedule': instance.schedule,
       'genres': instance.genres,
+      'type': instance.type,
+      'status': instance.status,
     };
