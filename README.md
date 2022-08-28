@@ -11,14 +11,15 @@ Proposal: Make a microapps architecture with abstracted technologies. Ideal for 
 ## Architecture 
 
 - Architecture of `micro apps` and `packages`.
-- `home` is a microapp that contains the list of series and search page logic
--`show_details` is a microapp that contains the show details logic
+- `home` is a microapp that contains the list of series and search pages and logic
+-`show_details` is a microapp that contains the show details pages and logic
 - `instance_manager` is a package to manage instances between micro apps.
     - Created logic in instance manager to open and close instances according to navigation routes.
 - `micro_app_dependencies` is class used for communication between microapps.
 - `state_manager` is a package to do state manager.
     - Used abstraction with MOBX and with RXNotifier.
 - `packages` is a package to centralize libraries between microapps. (ensure that all microapps use the same versions)
+- `micro_app` is a package to define microapp contracts
 - `design_system` is a package to manage the widgets.
     - Uses atomic model.
 - Used `clean architecture` 

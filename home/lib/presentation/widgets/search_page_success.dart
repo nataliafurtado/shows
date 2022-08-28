@@ -1,4 +1,5 @@
 import 'package:design_system/atom/card/show_card.dart';
+import 'package:design_system/theme_style.dart';
 import 'package:flutter/material.dart';
 import 'package:home/presentation/search/controller/search_controller.dart';
 import 'package:micro_app/micro_app.dart';
@@ -10,8 +11,9 @@ class SearchPageSuccess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = MicroApp.instanceManager.get<SearchController>();
+    final sp = ThemeStyle.themeType.spaceTypes();
     return AlignedGridView.count(
-      padding: EdgeInsets.only(top: 12),
+      padding: EdgeInsets.only(top: sp.s3),
       crossAxisCount: 3,
       mainAxisSpacing: 10,
       crossAxisSpacing: 5,

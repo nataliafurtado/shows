@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:design_system/atom/card/show_card.dart';
 import 'package:design_system/theme_style.dart';
 import 'package:flutter/material.dart';
